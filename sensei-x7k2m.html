@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>【教師用】面接 振り返りシート</title>
+<style>
+:root{--paper:#f7f4ec;--ink:#1f3350;--soft:#4a5b74;--gold:#b8860b;--gs:#f4e4b8;--red:#a63d2f;--bd:#d8d2bd}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.6 'Hiragino Sans','Noto Sans JP',Meiryo,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:22px 16px 80px}h1{font-size:22px;margin:0 0 4px;border-bottom:3px solid var(--ink);padding-bottom:8px}
+.sub{color:var(--soft);margin:6px 0 16px}.card{background:#fff;border:1px solid var(--bd);border-radius:4px;padding:16px;margin-bottom:14px}
+label{display:block;font-weight:700;font-size:13px;margin:12px 0 4px}label:first-child{margin-top:0}
+input,select,textarea{font:inherit;width:100%;padding:8px;border:1px solid var(--bd);border-radius:3px;background:#fffdf7;color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--gs);border-color:var(--gold)}textarea{min-height:80px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+button{font:inherit;padding:8px 14px;border:1px solid var(--ink);background:var(--ink);color:#fff;border-radius:3px;cursor:pointer}
+button.s{background:#fff;color:var(--ink)}button.d{background:#fff;color:var(--red);border-color:var(--red)}button.big{width:100%;padding:12px;font-size:15px;margin-top:14px}
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.cats label{margin:0;font-weight:500}
+.cats input{display:none}.cats span{display:block;text-align:center;padding:9px 4px;border:1px solid var(--bd);border-radius:3px;cursor:pointer;background:#fffdf7}
+.cats input:checked+span{background:var(--ink);color:#fff;border-color:var(--ink)}
+.combo{position:relative}.dd{position:absolute;z-index:20;left:0;right:0;top:100%;max-height:320px;overflow:auto;background:#fff;border:1px solid var(--gold);box-shadow:0 6px 16px rgba(0,0,0,.15)}
+.dd .h{background:#eee7d3;font-size:11.5px;font-weight:700;padding:4px 10px;position:sticky;top:0}.dd .o{padding:7px 10px;cursor:pointer;border-bottom:1px dashed #eee}
+.dd .o small{color:var(--soft);margin-left:6px}.dd .o.on,.dd .o:hover{background:var(--gs)}.dd mark{background:#ffe27a;padding:0}.dd .rc{font-size:10.5px;color:var(--gold);border:1px solid var(--gold);border-radius:8px;padding:0 5px;margin-left:6px}
+.ok{background:#e6f3ec;border:1px solid #2f6f4f;color:#2f6f4f;padding:10px;border-radius:3px;margin-bottom:12px}.warn{background:#fff4e0;border:1px solid var(--gold);padding:8px 12px;border-radius:3px;margin-bottom:12px;font-size:12.5px}
+.tabs{display:flex;gap:4px;margin:12px 0}.tabs button{background:#fff;color:var(--ink)}.tabs button.on{background:var(--ink);color:#fff}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}.bar>*{width:auto}.bar input{flex:1;min-width:160px}
+.group{background:#fff;border:1px solid var(--bd);border-radius:4px;margin-bottom:16px}.gh{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;background:var(--ink);color:#fff;padding:10px 14px;border-radius:3px 3px 0 0}
+.gh h3{margin:0;font-size:16px}.gh small{opacity:.8;margin-left:8px}.gh button{padding:3px 9px;font-size:12px;background:transparent;border-color:#fff}
+.e{margin:14px;border:1.5px solid #9d9478;border-radius:4px;overflow:hidden}.eh{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0;padding:8px 12px;background:#efe8d4;border-bottom:1.5px solid #9d9478}
+.yr{background:var(--gold);color:#fff;border-radius:3px;padding:1px 8px;font-weight:700;font-size:12.5px}.tg{background:#eee7d3;border-radius:3px;padding:1px 8px;font-size:12px}
+.eh .who{margin-left:auto;color:var(--soft);font-size:12px}.f{display:grid;grid-template-columns:190px 1fr;border-bottom:1px solid var(--bd)}.f:last-child{border-bottom:0}.f b{background:#faf6ea;padding:9px 12px;border-right:1px solid var(--bd);font-size:12.5px;color:var(--ink)}.f div{padding:9px 14px;white-space:pre-wrap}.pv{display:none}
+.cl{margin-bottom:12px}.cl h4{margin:0 0 6px;display:flex;gap:8px;align-items:center}.cl h4 button{padding:2px 8px;font-size:12px}
+.chip{display:inline-block;min-width:38px;text-align:center;padding:3px 6px;margin:2px;border:1px solid var(--bd);border-radius:3px;cursor:pointer;background:#fffdf7;user-select:none}
+.chip.on{background:var(--red);color:#fff;border-color:var(--red)}.chip.done{border-color:#2f6f4f;box-shadow:inset 0 -3px #2f6f4f}.hint{font-size:12px;color:var(--soft)}
+.ph{display:none}.foot{text-align:center;margin-top:30px;font-size:11px}.foot a{color:var(--soft)}
+@media(max-width:600px){.f{grid-template-columns:1fr}.f b{border-right:0;border-bottom:1px solid var(--bd)}.cats{grid-template-columns:1fr 1fr}.row3{grid-template-columns:1fr}}
+@media print{body{background:#fff}.noprint{display:none!important}.ph{display:block;font-size:18px;font-weight:700;margin-bottom:6px}.wrap{padding:0;max-width:none}
+.group{border:0;page-break-before:always}.group:first-of-type{page-break-before:avoid}.gh{background:#fff;color:#000;border-bottom:2px solid #000;border-radius:0}
+.group>.e{display:none}.pv{display:block}.pv .it{margin:0 0 16px;border:1.5px solid #000}.pv h4{margin:0;padding:5px 10px;font-size:14px;border-bottom:1.5px solid #000;background:#e8e8e8;-webkit-print-color-adjust:exact;print-color-adjust:exact;break-after:avoid}.pv ul{margin:0;padding:8px 12px 6px 30px}.pv li{margin:0 0 6px;padding-bottom:5px;border-bottom:1px dotted #888;white-space:pre-wrap;break-inside:avoid}.pv li:last-child{border-bottom:0}.pv .y{font-weight:700;font-size:11px;border:1px solid #000;padding:0 4px;margin-right:5px}body.pr1 .group:not(.pr){display:none}.who{display:none}}
+</style></head><body><div class="wrap" id="root"></div>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script>
+/* ===== ① Firebaseの設定（READMEの手順で取得した値に置き換える。null のままなら“お試しモード”＝このブラウザ内だけに保存） ===== */
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyCe1Tk1vfeaPp9AUtTJ29qibN94o9LBYtY",
+  authDomain: "gyoza-order-d3a16.firebaseapp.com",
+  databaseURL: "https://gyoza-order-d3a16-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "gyoza-order-d3a16",
+  storageBucket: "gyoza-order-d3a16.firebasestorage.app",
+  messagingSenderId: "589641862175",
+  appId: "1:589641862175:web:55f31ab32d68b74e91192a",
+  measurementId: "G-T0SZ0TFJVM"
+};
+const MODE = 'teacher'; // 'student'＝生徒用(index.html) / 'teacher'＝教師用(teacher.html)
+/* 例: {apiKey:"...",authDomain:"xxx.firebaseapp.com",projectId:"xxx",appId:"..."} */
+
+/* ===== ② 校内進路資料アプリから取り込んだ高校データ（区分 → [学校名,[[コード,コース,元の名称]]]） ===== */
+const SCHOOLS = {"pub":[["奈良商工",[[111,"機械工学","商工 [機械工学]"],[112,"情報工","商工 [情報工]"],[113,"建築","商工 [建築]"],[114,"総合","商工 [総合]"],[115,"観光","商工 [観光]"],[116,"情報ビ","商工 [情報ビ]"]]],["国際",[[121,"国際LI・DP","国際 [国際LI・DP]"],[122,"国際","国際 [国際]"]]],["高円芸術",[[131,"音楽","高円 [音楽]"],[132,"美術","高円 [美術]"],[133,"ﾃﾞｻﾞｲﾝ","高円 [ﾃﾞｻﾞｲﾝ]"],[441,"","高円芸術"]]],["山辺",[[141,"総合学科","山辺［総合学科］"],[142,"自立","山辺［自立］"],[143,"農業探求科","山辺［農業探求科］"]]],["添上",[[151,"ｽﾎﾟｰﾂ","添上 [ｽﾎﾟｰﾂ]"],[481,"","添上"]]],["二階堂",[[161,"キャリア","二階堂［キャリア］"]]],["商業",[[171,"商業","商業［商業］"]]],["桜井",[[181,"書芸","桜井［書芸］"],[511,"","桜井"]]],["五條",[[192,"商業","五條［商業］"],[521,"","五條"]]],["御所実業",[[201,"環境","御所実業[環境]"],[202,"機械","御所実業[機械]"],[203,"電気","御所実業[電気]"],[204,"都市","御所実業[都市]"],[205,"薬品","御所実業[薬品]"]]],["宇陀",[[231,"普通","宇陀［普通］"],[232,"情報","宇陀［情報］"],[233,"こども・福祉","宇陀［こども・福祉］"]]],["法隆寺国際",[[241,"歴史","法国際[歴史]"],[242,"英語","法国際 [英語]"],[571,"","法国際"]]],["磯城野",[[251,"食料","磯城野 [食料]"],[252,"動物","磯城野 [動物]"],[253,"野菜","磯城野 [野菜]"],[254,"草花","磯城野 [草花]"],[255,"生物","磯城野 [生物]"],[256,"食品","磯城野 [食品]"],[257,"造園","磯城野 [造園]"],[258,"緑化","磯城野 [緑化]"],[259,"ｼｪﾌ","磯城野 [ｼｪﾌ]"],[260,"ﾊﾟﾃｨｼｴ","磯城野 [ﾊﾟﾃｨｼｴ]"],[261,"ファッション","磯城野 [ファッション]"],[262,"ﾋｭｰﾏﾝ","磯城野 [ﾋｭｰﾏﾝ]"]]],["高取国際",[[271,"英語","高取［英語］"],[272,"ｺﾐｭ","高取［ｺﾐｭ］"],[581,"","高取国際"]]],["王寺工業",[[281,"機械","王寺工業[機械]"],[282,"電気","王寺工業[電気]"],[283,"電子","王寺工業[電子]"]]],["大和広陵",[[291,"ｽﾎﾟｰﾂ","大和広陵 [ｽﾎﾟｰﾂ]"],[591,"","大和広陵"]]],["奈良南",[[301,"情報科学","奈良南[情報科学]"],[302,"伝統建築","奈良南[伝統建築]"]]],["十津川",[[321,"総合","十津川［総合］"]]],["高田商業",[[341,"","高田商業"]]],["奈良",[[411,"","奈良"]]],["奈良県立大学付属",[[431,"","奈良県立大学付属"]]],["高田",[[461,"","高田"]]],["郡山",[[471,"","郡山"]]],["橿原",[[491,"","橿原"]]],["畝傍",[[501,"","畝傍"]]],["生駒",[[531,"","生駒"]]],["奈良北",[[541,"","奈良北"],[542,"数理情報","奈良北  [数理情報]"]]],["香芝",[[551,"","香芝"],[552,"表現探求","香芝[表現探求]"]]],["西和清陵",[[561,"","西和清陵"]]],["一条",[[621,"","一条"]]],["奈良商工(定)",[[611,"定","商工(定) [機械]"],[622,"定","商工(定) [ﾋﾞｼﾞﾈｽ]"]]],["大和中央",[[631,"Ⅰ","大和中央[Ⅰ]"],[642,"Ⅱ","大和中央[Ⅱ]"],[653,"Ⅲ","大和中央[Ⅲ]"]]],["山辺(定)山添",[[661,"定","山辺(定)山添・農業"],[662,"定","山辺(定)山添・家政"]]],["大和中央（通）",[[681,"通","大和中央(通)"]]],["高等養護",[[711,"","高等養護"]]],["二階堂養護",[[721,"","二階堂養護"]]],["奈良養護",[[731,"","奈良養護"]]],["奈良西養護",[[741,"","奈良西養護"]]],["奈良東養護",[[751,"","奈良東養護"]]],["盲学校",[[761,"","盲学校"]]]],"priv_in":[["育英西",[[1011,"立命館","育英西 [立命館]"],[1012,"特設文理","育英西 [特設文理]"],[1013,"特設連携","育英西 [特設連携]"]]],["橿原学院",[[1021,"特","橿学 [特]"],[1022,"標","橿学 [標]"],[1023,"美","橿学 [美](2+実)"]]],["智辯学園",[[1040,"国公立","智辯(国公立)"],[1041,"未来","智辯(未来)"],[1042,"普通","智辯(普通)"]]],["帝塚山",[[1051,"男S英数","帝塚山(男S英数)"],[1052,"男英数","帝塚山(男英数)"],[1053,"女S英数","帝塚山(女S英数)"],[1054,"女英数","帝塚山(女英数)"],[1055,"女特進","帝塚山(女特進)"]]],["天理",[[1061,"１","天理(１)"],[1062,"２","天理(２)"],[1063,"３","天理(３)"]]],["奈良育英",[[1081,"選抜","奈良育英(選抜)"],[1082,"高大G","奈良育英(高大G)"],[1083,"高大S","奈良育英(高大S)"],[1084,"総合","奈良育英(総合)"]]],["奈良学園",[[1091,"理数","奈良学園(理数)"]]],["奈良女子",[[1101,"特進","奈良女子(特進)"],[1102,"保育","奈良女子(保育)"],[1103,"進学","奈良女子(進学)"],[1104,"通信制","奈良女子(通信制)"]]],["奈良大学附属",[[1111,"特進","奈良大附(特進)"],[1112,"文理","奈良大附(文理)"],[1113,"標準","奈良大附(標準)"]]],["奈良文化",[[1121,"文理特進","奈良文化(文理特進)"],[1122,"Ⅱ類ｽﾎﾟｰﾂ","奈良文化(Ⅱ類ｽﾎﾟｰﾂ)"],[1123,"人間探求","奈良文化(人間探求)"],[1124,"看護","奈良文化(看護)"]]],["西大和学園",[[1131,"東・京・医","西大和(東・京・医)"],[1132,"国際","西大和(国際)"]]],["天理教校学園",[[1141,"","天理教校学園"]]],["天理（二部）",[[1151,"","天理二部"]]],["飛鳥未来",[[1161,"","飛鳥未来"]]],["長尾谷",[[1171,"","長尾谷"]]],["鹿島学園",[[1181,"","鹿島学園"]]],["智瓣カレッジ",[[1191,"文理選抜","智瓣カレッジ（文理選抜）"]]],["アイエス学園",[[1201,"","アイエス学園"]]],["関西文化芸術高等学校",[[1211,"美術","関西文化(美術)"],[1212,"ＶＤ","関西文化(ＶＤ)"],[1213,"陶芸","関西文化(陶芸)"],[1214,"音楽","関西文化(音楽)"],[1215,"舞芸","関西文化(舞芸)"]]],["第一学院",[[1221,"","第一学院"]]],["美芸",[[1241,"ｱﾊﾟﾚﾙ","美芸(ｱﾊﾟﾚﾙ)"]]],["美芸学園高等専修学校",[[1242,"情報会計","美芸(情報会計)"]]],["奈良理容美容専門学校",[[1251,"理容","奈良理美容(理容)"],[1252,"美容","奈良理美容(美容)"]]],["県立高等技術専門校",[[1261,"建築","県技専(建築)"],[1262,"服飾","県技専(服飾)"],[1263,"住宅","県技専(住宅)"],[1264,"ｵﾌｨｽ","県技専(ｵﾌｨｽ)"],[1265,"造園","県技専(造園)"]]],["橿原美容",[[1271,"","橿原美容"]]],["阪奈中央看護",[[1281,"","阪奈中央看護"]]]],"priv_out":[["上宮",[[2011,"パワー","上宮(パワー)"],[2012,"英数","上宮(英数)"],[2013,"ﾌﾟﾚｯﾌﾟ","上宮(ﾌﾟﾚｯﾌﾟ)"]]],["上宮太子",[[2021,"特進Ⅰ","上宮太子(特進Ⅰ)"],[2022,"特進Ⅱ","上宮太子(特進Ⅱ)"],[2023,"進学","上宮太子(進学)"]]],["大阪学芸",[[2031,"選抜","学芸(選抜)"],[2032,"特進Ⅰ","学芸(特進Ⅰ)"],[2033,"看護","学芸(看護)"],[2034,"特進Ⅱ","学芸(特進Ⅱ)"],[2035,"特進国際","学芸(特進国際)"],[2036,"進学","学芸(進学)"],[2037,"特技","学芸(特技)"]]],["常翔",[[2041,"ｽｰﾊﾟｰ","常翔(ｽｰﾊﾟｰ)"],[2042,"特進","常翔(特進)"],[2043,"薬医","常翔(薬医)"],[2044,"文理","常翔(文理)"]]],["大阪産業大学附属",[[2051,"特Ⅰ","大産大(特Ⅰ)"],[2052,"特Ⅱ","大産大(特Ⅱ)"],[2053,"進学","大産大(進学)"],[2054,"ｽﾎﾟｰﾂ","大産大(ｽﾎﾟｰﾂ)"],[2055,"国際","大産大(国際)"]]],["大阪商業大学",[[2061,"ｸﾞﾛｰﾊﾞﾙ","大商大(ｸﾞﾛｰﾊﾞﾙ)"],[2062,"文理進学","大商大(文理進学)"],[2063,"ｽﾎﾟｰﾂ","大商大(ｽﾎﾟｰﾂ)"],[2064,"ﾃﾞｻﾞｲﾝ","大商大(ﾃﾞｻﾞｲﾝ)"]]],["大阪女学院",[[2071,"文系","大女院(文系)"],[2072,"理系","大女院(理系)"],[2073,"英語","大女院(英語)"]]],["あべの翔学",[[2081,"AS特進","あべの翔学(AS特進)"],[2083,"進学","あべの翔学(進学)"]]],["大阪緑涼",[[2091,"文理","緑涼(文理)"],[2092,"保育","緑涼(保育)"],[2093,"進学","緑涼(進学)"],[2094,"調理","緑涼(調理)"]]],["大阪信愛女学院",[[2101,"文理","信愛(文理)"],[2102,"進学ｿﾚｲﾕ","信愛(進学ｿﾚｲﾕ)"],[2103,"進学ｴﾄﾜｰﾙ","信愛(進学ｴﾄﾜｰﾙ)"],[2104,"看護","信愛(看護)"],[2105,"教育","信愛(教育)"]]],["大阪電気通信大学",[[2111,"進学","電通大(進学)"],[2112,"ｽﾎﾟｰﾂ","電通大(ｽﾎﾟｰﾂ)"],[2113,"理数","電通大(理数)"],[2114,"電子総合","電通大(電子総合)"]]],["大阪桐蔭",[[2121,"Ⅰエク","大阪桐蔭(Ⅰエク)"],[2122,"Ⅰ特","大阪桐蔭(Ⅰ特)"],[2123,"Ⅲ","大阪桐蔭(Ⅲ)"]]],["大阪夕陽丘学園",[[2131,"特進Ⅰ","夕陽丘(特進Ⅰ)"],[2132,"特進Ⅱ","夕陽丘(特進Ⅱ)"],[2133,"英語","夕陽丘(英語)"],[2134,"音楽","夕陽丘(音楽）"],[2135,"美術","夕陽丘(美術）"],[2136,"文理進学","夕陽丘(文理進学 ）"]]],["開明",[[2141,"6編","開明(6編)"]]],["関西大学第一",[[2151,"男","関大一（男）"],[2152,"女","関大一（女）"]]],["関西福祉科学大学",[[2161,"特進Ⅰ","関西福祉(特進Ⅰ)"],[2162,"特進Ⅱ","関西福祉(特進Ⅱ)"],[2163,"進学","関西福祉(進学)"],[2164,"保育","関西福祉(保育)"]]],["近畿大学附属",[[2171,"Super","近大附(Super)"],[2172,"特進Ⅰ","近大附(特進Ⅰ)"],[2173,"特進Ⅱ","近大附(特進Ⅱ)"],[2174,"英語","近大附(英語)"],[2175,"進学","近大附(進学)"]]],["金蘭会",[[2181,"Ⅱ特進","金蘭会(Ⅱ特進)"],[2182,"Ⅱ看護","金蘭会(Ⅱ看護)"],[2183,"Ⅰ総合","金蘭会(Ⅰ総合)"],[2184,"Ⅰ保育児童","金蘭会(Ⅰ保育児童)"],[2185,"Ⅰｽﾎﾟｰﾂ・特技","金蘭会(Ⅰｽﾎﾟｰﾂ・特技)"]]],["興國",[[2191,"ｱﾄﾞﾊﾞﾝｽナレ","興國(ｱﾄﾞﾊﾞﾝｽナレ)"],[2192,"ｱｽﾘｰﾄ","興國(ｱｽﾘｰﾄ)"],[2193,"ｷｬﾘｱﾄﾗｲ","興國(ｷｬﾘｱﾄﾗｲ)"],[2194,"ｱｶﾃﾞﾐｱ","興國(ｱｶﾃﾞﾐｱ)"],[2195,"ｽｰﾊﾟｰｱﾄﾞﾊﾞﾝｽ","興國(ｽｰﾊﾟｰｱﾄﾞﾊﾞﾝｽ)"],[2196,"IT","興國(IT)"],[2197,"プレミアムアド","興國(プレミアムアド）"]]],["偕星学園",[[2201,"特進","偕星(特進)"],[2202,"文理進学","偕星(文理進学)"],[2203,"進路","偕星(進路)"],[2204,"ｽﾎﾟｰﾂ","偕星(ｽﾎﾟｰﾂ)"]]],["金光藤蔭",[[2211,"スタンダート","金光藤蔭（スタンダート）"],[2212,"ｱｰﾄ","金光藤蔭(ｱｰﾄ)"],[2213,"ｱｽﾘｰﾄ","金光藤蔭(ｱｽﾘｰﾄ)"],[2214,"エンカレッジ","金光藤蔭（エンカレッジ）"]]],["金光八尾",[[2221,"Ｓ特進","金光八尾(Ｓ特進)"],[2222,"特進","金光八尾(特進)"],[2223,"進学","金光八尾(進学)"],[2224,"美術","金光八尾(美術)"]]],["香ヶ丘リベルテ",[[2231,"ｸｯｷﾝｸﾞｴｷｽﾊﾟｰﾄ","香ヶ丘(ｸｯｷﾝｸﾞｴｷｽﾊﾟｰﾄ)"],[2232,"ﾌｨｼﾞｶﾙ","香ヶ丘(ﾌｨｼﾞｶﾙ)"],[2233,"ﾌｧｯｼｮﾝ","香ヶ丘(ﾌｧｯｼｮﾝ)"],[2234,"保育","香ヶ丘(保育)"],[2235,"美容","香ヶ丘(美容)"],[2236,"ﾗｲﾌﾃﾞｻﾞｲﾝ","香ヶ丘(ﾗｲﾌﾃﾞｻﾞｲﾝ)"],[2237,"ｱﾝﾀﾞﾝﾃ","香ヶ丘(ｱﾝﾀﾞﾝﾃ)"]]],["四天王寺",[[2241,"文特","四天王寺(文特)"],[2242,"文・スポ","四天王寺(文・スポ)"],[2243,"文理","四天王寺(文理)"]]],["四天王寺学園",[[2251,"特進","四天学園(特進)"],[2252,"進学","四天学園(進学)"]]],["樟蔭",[[2261,"国際","樟蔭(国際)"],[2262,"進学","樟蔭(進学)"],[2263,"身体表現","樟蔭(身体表現)"]]],["アナン学園",[[2271,"衛生看護","アナン(衛生看護）"],[2273,"調理","アナン(調理）"]]],["城星学園",[[2281,"進学","城星(進学)"],[2282,"探求","城星(探求)"]]],["城南学園",[[2291,"特進∞","城南(特進∞)"],[2292,"特進＋","城南(特進＋)"],[2293,"特進３","城南(特進３)"],[2294,"看護特進","城南（看護特進）"],[2295,"幼･福","城南(幼･福)"],[2296,"キャリア","城南(キャリア)"]]],["清教学園",[[2301,"理系","清教(理系)"],[2302,"文系","清教(文系)"]]],["清風",[[2311,"理Ⅲ編入","清風(理Ⅲ編入)"],[2312,"理数","清風(理数)"],[2313,"文理","清風(文理)"]]],["相愛",[[2321,"特進","相愛(特進)"],[2322,"専攻選択","相愛(専攻選択)"],[2323,"音楽","相愛(音楽)"]]],["太成学院大学",[[2331,"特進Ⅰ","太成(特進Ⅰ)"],[2332,"特進Ⅱ","太成(特進Ⅱ)"],[2333,"総合人間","太成(総合人間)"],[2334,"ﾊﾟﾃｨｽﾘｰ","太成(ﾊﾟﾃｨｽﾘｰ)"],[2335,"スポーツ進学","太成(スポーツ進学)"],[2336,"アスリート","太成(アスリート)"]]],["大阪暁光",[[2341,"教育","大阪暁光(教育)"],[2342,"幼教","大阪暁光(幼教)"],[2343,"進学","大阪暁光(進学)"],[2344,"看護","大阪暁光(看護)"]]],["同志社香里",[[2351,"","同志社香里"]]],["初芝富田林",[[2371,"文理Ⅲ","利晶学園(文理Ⅲ)"],[2372,"文理Ⅱ","利晶学園(文理Ⅱ)"],[2373,"文理Ⅰ","利晶学園(文理Ⅰ)"]]],["東大阪大学敬愛",[[2391,"調理・製菓","敬愛(調理・製菓)"],[2392,"総合キ","敬愛(総合キ)"],[2393,"ステップ","敬愛(ステップ)"],[2394,"アスリート","敬愛(アスリート)"]]],["阪南大学",[[2401,"特進S","阪南大(特進S)"],[2402,"特進A","阪南大(特進A)"],[2403,"総合進学","阪南大(総合進学)"]]],["プール学院",[[2421,"ス特進","プール(ス特進)"],[2422,"特進","プール(特進)"],[2423,"国際","プール(国際)"],[2424,"総合芸術","プール(総合芸術)"]]],["明浄学院",[[2431,"総合キ","明浄(総合キ)"],[2432,"看護","明浄(看護)"],[2433,"衛生看護","明浄(衛生看護)"]]],["明星",[[2441,"選抜","明星(選抜)"],[2442,"文理","明星(文理)"]]],["桃山学院",[[2451,"Ｓ英数","桃山(Ｓ英数)"],[2452,"英数","桃山(英数)"],[2453,"文理","桃山(文理)"],[2454,"文理ｱｽﾘｰﾄ","桃山(文理ｱｽﾘｰﾄ)"],[2455,"国際","桃山(国際)"]]],["昇陽",[[2461,"特進","昇陽(特進)"],[2462,"進学","昇陽(進学)"],[2463,"公務員","昇陽(公務員)"],[2464,"ﾋﾞｼﾞﾈｽ","昇陽(ﾋﾞｼﾞﾈｽ)"],[2465,"ﾊﾟﾃｨｼｴ","昇陽(ﾊﾟﾃｨｼｴ)"],[2466,"看・医","昇陽(看・医)"],[2467,"福祉","昇陽(福祉)"],[2468,"保育","昇陽(保育)"]]],["関西創価",[[2511,"","関西創価"]]],["建国",[[2521,"特進","建国(特進)"],[2522,"韓国","建国(韓国)"],[2523,"英米","建国(英米)"]]],["大阪成蹊",[[2541,"進学","大阪成蹊（進学）"]]],["大阪学院",[[2551,"特進","大阪学院(特進)"],[2552,"総合","大阪学院(総合)"],[2553,"ｽﾎﾟｰﾂ","大阪学院(ｽﾎﾟｰﾂ)"]]],["追手門",[[2601,"Ⅰ類","追手門(Ⅰ類)"],[2602,"Ⅱ類","追手門(Ⅱ類)"],[2603,"特選","追手門(特選)"]]],["追手門大手前",[[2611,"ｽｰﾊﾟｰ","追手門大手前(ｽｰﾊﾟｰ)"],[2612,"特進","追手門大手前(特進)"],[2613,"進学","追手門大手前(進学)"]]],["東海大仰星",[[2621,"英特","東海大仰星(英特)"],[2622,"総進","東海大仰星(総進)"]]],["好文女子",[[2631,"特進","好文女子（特進）"],[2632,"進学","好文女子（進学）"],[2633,"ﾃﾞｻﾞｲﾝ","好文女子（ﾃﾞｻﾞｲﾝ）"],[2634,"ﾏﾝｶﾞ","好文女子（ﾏﾝｶﾞ）"],[2635,"スポーツ","好文女子（スポーツ）"],[2636,"保育","好文女子（保育）"],[2637,"ITﾗｲｾﾝｽ","好文女子（ITﾗｲｾﾝｽ）"],[2638,"看護医療","好文女子（看護医療）"]]],["大商大堺",[[2641,"ｸﾞﾛｰﾊﾞﾙ","大商大堺（ｸﾞﾛｰﾊﾞﾙ）"]]],["関西情報",[[2651,"","関西情報"]]],["大谷",[[3011,"ﾏｽﾀｰ","大谷(ﾏｽﾀｰ)"],[3012,"ｺｱ","大谷(ｺｱ)"],[3013,"ｲﾝﾃｸﾞﾗﾙ","大谷(ｲﾝﾃｸﾞﾗﾙ)"]]],["華頂女子",[[3021,"普通","華頂女子(普通)"]]],["京都外大西",[[3031,"特進Ⅰ","京都外大西(特進Ⅰ)"],[3032,"特進Ⅱ","京都外大西(特進Ⅱ)"],[3033,"総合","京都外大西(総合）"],[3034,"国文A","京都外大西(国文A)"],[3035,"国文B","京都外大西(国文B)"],[3036,"体育","京都外大西(体育)"]]],["京都芸術",[[3041,"美術","京都芸術(美術)"]]],["京産大附",[[3051,"特進","京産大附(特進)"],[3052,"進学","京産大附(進学)"]]],["京都翔英",[[3061,"普通","京都翔英(普通)"]]],["京都女子",[[3071,"Ｗ","京都女子(Ｗ)"],[3072,"Ⅱ","京都女子(Ⅱ)"]]],["京都精華学園",[[3081,"進学Ａ","精華(進学Ａ)"],[3082,"進学Ｂ","精華(進学Ｂ)"],[3083,"遊学","精華(遊学)"],[3084,"美術","精華(美術)"]]],["京都橘",[[3091,"Ａ","京都橘(Ａ)"],[3092,"Ｅ","京都橘(Ｅ)"],[3093,"Ｓ","京都橘(Ｓ)"]]],["京都文教",[[3101,"特進Ａ","京都文教(特進Ａ)"],[3102,"Ｂ文理","京都文教(Ｂ文理)"],[3103,"Ｂ英語","京都文教(Ｂ英語)"],[3104,"進学","京都文教(進学)"],[3105,"体育","京都文教(体育)"]]],["同志社国際",[[3111,"","同志社国際"],[10071,"帰国","同国際（帰国）"]]],["平安女学院",[[3121,"総合","平安女学院(総合)"],[3122,"幼児","平安女学院(幼児)"],[3123,"立命館","平安女学院(立命館)"]]],["京都廣学館",[[3131,"アドバンス","廣学館(アドバンス)"],[3132,"ジェネラル","廣学館(ジェネラル)"]]],["洛南",[[3141,"空パラ","洛南(空パラ)"],[3142,"海パラ","洛南(海パラ)"]]],["立命館宇治",[[3151,"普通","立命館宇治(普通)"],[3152,"ＩＭ","立命館宇治(ＩＭ)"],[3153,"ＩＢ","立命館宇治(ＩＢ)"],[3154,"Ｂ日程","立命館宇治(Ｂ日程)"]]],["龍谷大学付属平安",[[3161,"ﾌﾟﾛｸﾞﾚｽ","龍谷平安(ﾌﾟﾛｸﾞﾚｽ)"],[3162,"選抜特進","龍谷平安(選抜特進)"],[3163,"ｱｽﾘｰﾄ","龍谷平安(ｱｽﾘｰﾄ)"]]],["両洋",[[3171,"K特進","両洋(K特進)"],[3172,"J標準","両洋(J標準)"],[3175,"S進学","両洋(S進学)"]]],["同志社女子",[[3181,"","同志社女子"]]],["同志社",[[3191,"","同志社"]]],["桜丘",[[4011,"寮","桜丘(寮)"],[4012,"通学","桜丘(通学)"]]],["青山",[[4021,"特進S","青山(特進S)"],[4022,"特進","青山(特進)"],[4023,"進学","青山(進学)"]]],["初芝橋本",[[4031,"プレミアム","初橋本［プレミアム］"],[4032,"立命","初橋本［立命］"],[4033,"総合","初橋本［総合］"],[4044,"スポ","初橋本［スポ］"]]],["近大高専",[[4041,"工学","近大高専(工学)"]]],["高野山",[[4051,"普通","高野山(普通)"],[4052,"宗教","高野山(宗教)"]]],["岡山白陵",[[10061,"","岡山白陵"]]],["関西インターナショナル",[[10081,"","関西インターナショナル"]]],["関西テレビ電機専門学校",[[10091,"","関西テレビ電機専門学校"]]],["大阪情報コンピューター高等専修学校",[[10101,"","大阪情報コンピューター高等専修学校"]]],["東洋学園",[[10111,"情報","東洋学園（情報）"]]],["真壁",[[10121,"環境","真壁(環境)"]]],["北星余市",[[10131,"","北星余市"]]],["三重",[[10141,"進学","三重(進学)"]]],["宇部商",[[10151,"情報・商業","宇部商（情報・商業）"]]]],"nat":[["奈良県立大学付属",[[431,"","奈良県立大学付属"]]],["奈良工業高等専門",[[811,"情報科学","奈工専 [情報科学]"],[812,"システムデザイン","奈工専 [システムデザイン]"],[813,"物質創成","奈工専 [物質創成]"]]],["大阪教育大学附属天王寺校舎",[[821,"","大教大天王寺"]]],["大阪教育大学附属平野校舎",[[831,"","大教大平野"]]],["大阪教育大学附属池田校舎",[[841,"","大教大池田"]]],["京都教育大学附属",[[851,"","京教大附属"]]],["舞鶴高専",[[861,"建設","舞鶴高専（建設）"]]]]};
+const CATN = {pub:'奈良県公立', priv_in:'県内私立', priv_out:'県外私立', nat:'国立・県立大'};
+const FIELDS = [['q','面接で聞かれたこと（できるだけ具体的に）'],['good','うまくできた点・準備して役に立ったこと'],['bad','反省点・もっと準備しておけばよかったこと'],['adv','後輩へのアドバイス']];
+
+const $ = (s,e=document)=>e.querySelector(s), $$=(s,e=document)=>[...e.querySelectorAll(s)];
+const esc = s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm = s=>String(s).normalize('NFKC').toLowerCase().replace(/[ァ-ヶ]/g,c=>String.fromCharCode(c.charCodeAt(0)-96)).replace(/\s/g,'');
+const nat = (a,b)=>String(a).localeCompare(String(b),'ja',{numeric:true});
+const curYear = ()=>{const d=new Date();return d.getMonth()>=3?d.getFullYear():d.getFullYear()-1};
+const yl = y=>`${y}年度（令和${y-2018}）入試`;
+function parseList(s){const o=[];String(s).split(/[,、，\s]+/).filter(Boolean).forEach(t=>{t=t.normalize('NFKC');const m=t.match(/^(\d+)[-~〜ー−](\d+)$/);if(m){for(let i=+m[1];i<=+m[2]&&i<=200;i++)o.push(String(i))}else o.push(t.replace(/組$/,''))});return[...new Set(o)]}
+
+/* ===== データ層（Firebase / お試しモード共通） ===== */
+const FB = !!FIREBASE_CONFIG && typeof firebase!=='undefined';
+let fdb, auth, user=null; const cache={roster:[],entries:[],recent:[]}, unsub={}; let onChange=()=>{};
+const LS={get:c=>JSON.parse(localStorage.getItem('iv_'+c)||'[]'),set:(c,a)=>localStorage.setItem('iv_'+c,JSON.stringify(a))};
+if(FB){firebase.initializeApp(FIREBASE_CONFIG);fdb=firebase.firestore();auth=firebase.auth()}
+function watch(c){
+  if(unsub[c])return;
+  if(FB)unsub[c]=fdb.collection(c).onSnapshot(s=>{cache[c]=s.docs.map(d=>({id:d.id,...d.data()}));onChange()},e=>{console.warn(c,e.code);cache[c]=[];onChange()});
+  else{cache[c]=LS.get(c);unsub[c]=1}
+}
+async function putMany(c,items){ // items: [{id?,...data}]
+  if(FB){for(let i=0;i<items.length;i+=400){const b=fdb.batch();items.slice(i,i+400).forEach(({id,...d})=>b.set(id?fdb.collection(c).doc(id):fdb.collection(c).doc(),d));await b.commit()}return}
+  let a=LS.get(c);const ids=new Set(items.map(x=>x.id).filter(Boolean));a=a.filter(x=>!ids.has(x.id));
+  items.forEach(x=>a.push({...x,id:x.id||Date.now().toString(36)+Math.random().toString(36).slice(2,7)}));LS.set(c,a);cache[c]=a;onChange();
+}
+async function delMany(c,ids){
+  if(FB){for(let i=0;i<ids.length;i+=400){const b=fdb.batch();ids.slice(i,i+400).forEach(id=>b.delete(fdb.collection(c).doc(id)));await b.commit()}return}
+  const s=new Set(ids),a=LS.get(c).filter(x=>!s.has(x.id));LS.set(c,a);cache[c]=a;onChange();
+}
+
+/* ===== 画面切替 ===== */
+const root=$('#root');
+function route(){ MODE==='teacher'?teacherView():studentView(); }
+function modeNote(){return FB?'':'<div class="warn noprint">⚠ お試しモード：Firebase未設定のため、データはこのブラウザ内にだけ保存されます（READMEの手順で設定すると全員で共有されます）。</div>'}
+
+/* ================= 生徒画面 ================= */
+function studentView(){
+  onChange=()=>{};watch('roster');watch('recent');
+  const cy=curYear();let cat='',sel=null,idx=-1;
+  root.innerHTML=`<h1>面接 振り返りシート</h1><p class="sub">受験した高校の面接について、後輩のために振り返りを書いてください。（名前は書きません）</p>${modeNote()}<div id="done"></div>
+  <div class="card"><label>入試年度</label><select id="yr">${[cy+1,cy,cy-1,cy-2].map(y=>`<option value="${y}" ${y==cy?'selected':''}>${yl(y)}</option>`).join('')}</select>
+  <div class="row"><div><label>クラス</label><select id="cls"></select></div><div><label>出席番号</label><select id="no"></select></div></div>
+  <div id="rmsg" class="hint"></div></div>
+  <div class="card"><label>受験区分</label><div class="cats">${Object.entries(CATN).map(([k,v])=>`<label><input type="radio" name="cat" value="${k}"><span>${v}</span></label>`).join('')}</div>
+  <label>高校名（途中まで入力すると候補が出ます）</label><div class="combo"><input id="sch" autocomplete="off" placeholder="先に受験区分を選んでください" disabled><div class="dd" id="dd" hidden></div></div></div>
+  <div class="card"><div class="row3"><div><label>面接の形式</label><select id="fmt"><option>個人面接</option><option>集団面接</option><option>グループ討論</option><option>その他</option></select></div>
+  <div><label>面接時間（分）</label><input id="mins" type="number" min="1" max="120"></div><div><label>面接官の人数</label><input id="cnt" type="number" min="1" max="10"></div></div>
+  ${FIELDS.map(([k,t])=>`<label>${t}</label><textarea id="f_${k}"></textarea>`).join('')}
+  <button class="big" id="go">提出する</button></div>
+  `;
+  const yr=$('#yr'),cls=$('#cls'),no=$('#no'),sch=$('#sch'),dd=$('#dd');
+  function syncRoster(){
+    const y=+yr.value,rs=cache.roster.filter(r=>r.year===y),pc=cls.value,pn=no.value;
+    const cs=[...new Set(rs.map(r=>r.cls))].sort(nat);
+    cls.innerHTML=cs.length?cs.map(c=>`<option value="${esc(c)}">${esc(c)}組</option>`).join(''):'<option value="">（名簿なし）</option>';
+    if(cs.includes(pc))cls.value=pc;syncNo(pn);
+    $('#rmsg').textContent=cs.length?'':'この年度の名簿が登録されていません。先生に伝えてください。';
+  }
+  function syncNo(pn){
+    const y=+yr.value,ns=cache.roster.filter(r=>r.year===y&&r.cls===cls.value).map(r=>r.no).sort(nat);
+    no.innerHTML=ns.map(n=>`<option value="${esc(n)}">${esc(n)}番</option>`).join('');if(ns.includes(pn))no.value=pn;
+  }
+  onChange=syncRoster;syncRoster();yr.onchange=syncRoster;cls.onchange=()=>syncNo();
+  /* --- 高校名コンボボックス --- */
+  $$('input[name=cat]').forEach(r=>r.onchange=()=>{cat=r.value;sel=null;sch.value='';sch.disabled=false;sch.placeholder='例）「ならき」「天理」「ﾃﾞｻﾞｲﾝ」など';sch.focus();draw()});
+  const hl=(t,q)=>{let h=esc(t);q.split(/\s+/).filter(Boolean).forEach(w=>{const e=esc(w).replace(/[.*+?^${}()|[\]\\]/g,'\\$&');h=h.replace(new RegExp('('+e+')(?![^<]*>)','gi'),'<mark>$1</mark>')});return h};
+  let rows=[];
+  function draw(){
+    if(!cat){dd.hidden=true;return}
+    const q=sch.value.trim(),toks=q.split(/\s+/).map(norm).filter(Boolean);
+    const rec=cache.recent.filter(r=>r.cat===cat).sort((a,b)=>b.ts-a.ts).slice(0,5).map(r=>r.school);
+    rows=[];(SCHOOLS[cat]||[]).forEach(([school,cs])=>cs.forEach(([code,course,name])=>{const hay=norm(school+name+course);
+      if(toks.every(t=>hay.includes(t)))rows.push({code,school,course,r:rec.indexOf(school),s:toks.length&&norm(school).startsWith(toks[0])?0:1})}));
+    rows.sort((a,b)=>((a.r<0)-(b.r<0))||(a.r-b.r)||(a.s-b.s));
+    let h='',last='';
+    rows.forEach((o,i)=>{
+      if(!toks.length){const g=o.r>=0?'最近選ばれた高校（全コース）':'すべての高校';if(g!==last){h+=`<div class="h">${g}</div>`;last=g}}
+      h+=`<div class="o${i===idx?' on':''}" data-i="${i}">${hl(o.school,q)}${o.course?`<small>${hl(o.course,q)}</small>`:''}${toks.length&&o.r>=0?'<span class="rc">最近</span>':''}</div>`});
+    if(q)h+=`<div class="o" data-i="x">「${esc(q)}」をこのまま入力（リストにない高校）</div>`;
+    if(!rows.length&&!q)h='<div class="h">候補がありません</div>';
+    dd.innerHTML=h;dd.hidden=false;
+  }
+  function pick(o){sel=o==='x'?{code:0,school:sch.value.trim(),course:''}:rows[+o];sch.value=sel.school+(sel.course?`［${sel.course}］`:'');dd.hidden=true}
+  sch.oninput=()=>{sel=null;idx=-1;draw()};sch.onfocus=()=>{idx=-1;draw()};
+  sch.onkeydown=e=>{if(dd.hidden)return;if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();idx=Math.max(0,Math.min(rows.length-1,idx+(e.key==='ArrowDown'?1:-1)));draw();$('.o.on',dd)?.scrollIntoView({block:'nearest'})}
+    else if(e.key==='Enter'&&idx>=0){e.preventDefault();pick(idx)}else if(e.key==='Escape')dd.hidden=true};
+  dd.onmousedown=e=>{const o=e.target.closest('.o');if(o){e.preventDefault();pick(o.dataset.i)}};
+  sch.onblur=()=>setTimeout(()=>dd.hidden=true,120);
+  /* --- 提出 --- */
+  $('#go').onclick=async()=>{
+    if(!cls.value||!no.value)return alert('クラスと出席番号を選んでください。');
+    if(!cat)return alert('受験区分を選んでください。');
+    if(!sel){const t=sch.value.trim();if(!t)return alert('高校名を選んでください。');sel={code:0,school:t,course:''}}
+    if(!FIELDS.some(([k])=>$('#f_'+k).value.trim()))return alert('振り返りを1つ以上書いてください。');
+    const e={year:+yr.value,cls:cls.value,no:no.value,cat,code:sel.code,school:sel.school,course:sel.course,fmt:$('#fmt').value,mins:$('#mins').value,cnt:$('#cnt').value,ts:Date.now()};
+    FIELDS.forEach(([k])=>e[k]=$('#f_'+k).value.trim());
+    $('#go').disabled=true;
+    try{await putMany('entries',[e]);await putMany('recent',[{id:(cat+'_'+sel.school).replace(/\//g,'_'),cat,school:sel.school,ts:e.ts}]);
+      $('#done').innerHTML=`<div class="ok">✔ 提出しました（${esc(sel.school)}）。別の高校も受験した人は、続けて入力できます。</div>`;
+      FIELDS.forEach(([k])=>$('#f_'+k).value='');$('#mins').value=$('#cnt').value='';sel=null;sch.value='';scrollTo(0,0);
+    }catch(err){alert('送信に失敗しました：'+err.message)}$('#go').disabled=false;
+  };
+}
+
+/* ================= 教師画面 ================= */
+let tTab='list',F={y:'',cat:'',q:''},pick=new Set(),R={y:curYear(),sel:new Set()};
+function teacherView(){
+  watch('roster');watch('recent');
+  watch('entries');onChange=()=>{if(tTab==='list')drawGroups();else drawRoster()};
+  root.innerHTML=`<div class="noprint"><h1>教師用：面接振り返り</h1>${modeNote()}<div class="tabs"><button data-t="list">振り返り一覧（高校別）</button><button data-t="roster">名簿（クラス・出席番号）</button><span style="flex:1"></span><button class="s" onclick="location.href='index.html'">生徒用ページへ</button></div></div><div id="tb"></div>`;
+  $$('.tabs [data-t]').forEach(b=>{b.classList.toggle('on',b.dataset.t===tTab);b.onclick=()=>{tTab=b.dataset.t;teacherView()}});
+  tTab==='list'?listTab():rosterTab();
+}
+/* --- 振り返り一覧 --- */
+const ORD=new Map();Object.entries(SCHOOLS).forEach(([c,a])=>a.forEach(([s],i)=>ORD.set(c+s,i)));
+function listTab(){
+  const ys=[...new Set(cache.entries.map(e=>e.year))].sort((a,b)=>b-a);
+  $('#tb').innerHTML=`<div class="bar noprint"><select id="fy"><option value="">すべての年度</option>${ys.map(y=>`<option value="${y}" ${F.y==y?'selected':''}>${yl(y)}</option>`).join('')}</select>
+  <select id="fc"><option value="">すべての区分</option>${Object.entries(CATN).map(([k,v])=>`<option value="${k}" ${F.cat===k?'selected':''}>${v}</option>`).join('')}</select>
+  <input id="fq" placeholder="高校名・内容で絞り込み" value="${esc(F.q)}"><button id="pa" class="s">表示中をすべて印刷</button><button id="dsel" class="d">選択を削除</button><button id="dall" class="d">表示中をすべて削除</button></div><div id="sum" class="hint noprint"></div><div id="gl"></div>`;
+  $('#fy').onchange=e=>{F.y=e.target.value;drawGroups()};$('#fc').onchange=e=>{F.cat=e.target.value;drawGroups()};$('#fq').oninput=e=>{F.q=e.target.value;drawGroups()};
+  $('#pa').onclick=()=>{document.body.classList.remove('pr1');print()};
+  $('#dsel').onclick=()=>delEntries([...pick],'選択した');$('#dall').onclick=()=>delEntries(filtered().map(e=>e.id),'表示中の');
+  drawGroups();
+}
+function filtered(){const q=norm(F.q);return cache.entries.filter(e=>(!F.y||e.year==F.y)&&(!F.cat||e.cat===F.cat)&&(!q||norm([e.school,e.course,e.q,e.good,e.bad,e.adv].join(' ')).includes(q)))}
+async function delEntries(ids,label){if(!ids.length)return alert('削除する対象がありません。');if(!confirm(`${label}振り返り ${ids.length}件を削除します。元に戻せません。よろしいですか？`))return;await delMany('entries',ids);ids.forEach(i=>pick.delete(i))}
+function pv(a){
+  const tag=e=>`<span class="y">${e.year}年度</span>${e.course?`［${esc(e.course)}］`:''}`;
+  const inf=e=>[e.fmt,e.mins?e.mins+'分':'',e.cnt?'面接官'+e.cnt+'人':''].filter(Boolean).join('・');
+  const info=a.filter(inf).map(e=>`<li>${tag(e)}${esc(inf(e))}</li>`).join('');
+  return (info?`<div class="it"><h4>面接の形式・時間</h4><ul>${info}</ul></div>`:'')+FIELDS.map(([f,t])=>{const l=a.filter(e=>e[f]);return l.length?`<div class="it"><h4>${t.replace(/（.*$/,'')}</h4><ul>${l.map(e=>`<li>${tag(e)}${esc(e[f])}</li>`).join('')}</ul></div>`:''}).join('');
+}
+function drawGroups(){
+  const gl=$('#gl');if(!gl)return;const es=filtered(),g=new Map();
+  es.forEach(e=>{const k=e.cat+'\u0001'+e.school;if(!g.has(k))g.set(k,[]);g.get(k).push(e)});
+  const ks=[...g.keys()].sort((a,b)=>{const[ca,sa]=a.split('\u0001'),[cb,sb]=b.split('\u0001'),co=Object.keys(CATN);return co.indexOf(ca)-co.indexOf(cb)||((ORD.get(ca+sa)??9999)-(ORD.get(cb+sb)??9999))||nat(sa,sb)});
+  $('#sum').textContent=`表示中：${ks.length}校 / ${es.length}件`;$('#dsel').textContent=`選択を削除（${pick.size}）`;
+  gl.innerHTML=ks.length?ks.map((k,gi)=>{const[c,s]=k.split('\u0001'),a=g.get(k).sort((x,y)=>y.year-x.year||y.ts-x.ts),yrs=[...new Set(a.map(e=>e.year))];
+    return`<div class="group" data-g="${gi}"><div class="gh"><h3>${esc(s)}<small>${CATN[c]||''}・${a.length}件・${yrs.map(y=>y+'年度').join(' ')}</small></h3><span class="noprint"><button data-pr="${gi}">この高校を印刷</button> <button data-dg="${gi}">この高校を全削除</button></span></div>
+    <div class="ph">${esc(s)}　面接の振り返り（先輩より）</div>${a.map(e=>`<div class="e"><div class="eh"><input type="checkbox" class="noprint" style="width:auto" data-id="${e.id}" ${pick.has(e.id)?'checked':''}><span class="yr">${yl(e.year)}</span>${e.course?`<span class="tg">${esc(e.course)}</span>`:''}<span class="tg">${esc(e.fmt||'')}${e.mins?'・'+esc(e.mins)+'分':''}${e.cnt?'・面接官'+esc(e.cnt)+'人':''}</span><span class="who noprint">${esc(e.cls)}組${esc(e.no)}番</span><button class="d noprint" style="padding:1px 8px;font-size:12px" data-de="${e.id}">削除</button></div>
+    ${FIELDS.filter(([f])=>e[f]).map(([f,t])=>`<div class="f"><b>${t}</b><div>${esc(e[f])}</div></div>`).join('')}</div>`).join('')}<div class="pv">${pv(a)}</div></div>`}).join(''):'<div class="card hint">該当する振り返りはまだありません。</div>';
+  const groups=[...gl.children];
+  $$('[data-id]',gl).forEach(c=>c.onchange=()=>{c.checked?pick.add(c.dataset.id):pick.delete(c.dataset.id);$('#dsel').textContent=`選択を削除（${pick.size}）`});
+  $$('[data-de]',gl).forEach(b=>b.onclick=()=>delEntries([b.dataset.de],'この'));
+  $$('[data-dg]',gl).forEach(b=>b.onclick=()=>delEntries(g.get(ks[+b.dataset.dg]).map(e=>e.id),'この高校の'));
+  $$('[data-pr]',gl).forEach(b=>b.onclick=()=>{const el=groups[+b.dataset.pr];el.classList.add('pr');document.body.classList.add('pr1');print();setTimeout(()=>{el.classList.remove('pr');document.body.classList.remove('pr1')},500)});
+}
+/* --- 名簿 --- */
+function rosterTab(){
+  const ys=[...new Set([curYear()-1,curYear(),curYear()+1,R.y,...cache.roster.map(r=>r.year)])].sort((a,b)=>b-a);
+  $('#tb').innerHTML=`<div class="card"><label>対象年度</label><select id="ry">${ys.map(y=>`<option value="${y}" ${y==R.y?'selected':''}>${yl(y)}</option>`).join('')}</select>
+  <div class="row"><div><label>クラス（複数可）</label><input id="rc" placeholder="例）1-4　または　1,2,3"></div><div><label>出席番号（範囲・複数可）</label><input id="rn" placeholder="例）1-35　または　1-30,33,35"></div></div>
+  <div class="bar" style="margin-top:10px"><button id="radd">追加登録（クラス×番号を一括）</button><button id="rdel" class="d">上の指定で削除（クラス空欄＝全クラス）</button></div>
+  <div class="hint">例：クラス「1-4」・番号「1-35」で、1〜4組の1〜35番を一括登録／削除できます。</div></div>
+  <div class="card"><div class="bar"><span id="rinfo"></span><button id="rsel" class="d">選択した番号を削除</button><button id="rall" class="d">この年度の名簿を全削除</button><label style="margin:0;font-weight:500;display:flex;gap:4px"><input type="checkbox" id="rwe" style="width:auto">提出済みの振り返りも一緒に削除</label></div>
+  <div class="hint">番号をクリックで選択（赤）。緑の下線＝提出済み。</div><div id="rg"></div></div>`;
+  $('#ry').onchange=e=>{R.y=+e.target.value;R.sel.clear();drawRoster()};
+  $('#radd').onclick=async()=>{const cs=parseList($('#rc').value),ns=parseList($('#rn').value);if(!cs.length||!ns.length)return alert('クラスと出席番号を入力してください。');
+    const it=[];cs.forEach(c=>ns.forEach(n=>it.push({id:`${R.y}_${c}_${n}`,year:R.y,cls:c,no:n})));await putMany('roster',it);alert(`${it.length}人分を登録しました。`)};
+  $('#rdel').onclick=()=>{const cs=$('#rc').value.trim()?parseList($('#rc').value):null,ns=parseList($('#rn').value);if(!ns.length)return alert('削除する出席番号を入力してください。');
+    rdel(cache.roster.filter(r=>r.year===R.y&&(!cs||cs.includes(r.cls))&&ns.includes(r.no)),'指定した')};
+  $('#rsel').onclick=()=>rdel(cache.roster.filter(r=>R.sel.has(r.id)),'選択した');
+  $('#rall').onclick=()=>rdel(cache.roster.filter(r=>r.year===R.y),R.y+'年度の')
+  drawRoster();
+}
+async function rdel(rs,label){
+  if(!rs.length)return alert('該当する名簿がありません。');
+  const we=$('#rwe').checked,es=we?cache.entries.filter(e=>rs.some(r=>r.year===e.year&&r.cls===e.cls&&r.no===e.no)):[];
+  if(!confirm(`${label}名簿 ${rs.length}人分を削除します。${we?`\n提出済みの振り返り ${es.length}件も削除されます。`:'\n（提出済みの振り返りは残ります）'}\nよろしいですか？`))return;
+  await delMany('roster',rs.map(r=>r.id));if(es.length)await delMany('entries',es.map(e=>e.id));rs.forEach(r=>R.sel.delete(r.id));
+}
+function drawRoster(){
+  const rg=$('#rg');if(!rg)return;const rs=cache.roster.filter(r=>r.year===R.y),cs=[...new Set(rs.map(r=>r.cls))].sort(nat);
+  const done=new Set(cache.entries.filter(e=>e.year===R.y).map(e=>e.cls+'|'+e.no));
+  $('#rinfo').textContent=`${cs.length}クラス・${rs.length}人（提出済み ${rs.filter(r=>done.has(r.cls+'|'+r.no)).length}人）`;
+  rg.innerHTML=cs.length?cs.map(c=>{const a=rs.filter(r=>r.cls===c).sort((x,y)=>nat(x.no,y.no));
+    return`<div class="cl"><h4>${esc(c)}組（${a.length}人）<button class="s" data-ca="${esc(c)}">全選択/解除</button><button class="d" data-cd="${esc(c)}">このクラスを全削除</button></h4>${a.map(r=>`<span class="chip${R.sel.has(r.id)?' on':''}${done.has(r.cls+'|'+r.no)?' done':''}" data-r="${r.id}">${esc(r.no)}</span>`).join('')}</div>`}).join(''):'<p class="hint">この年度の名簿はまだありません。上の欄から登録してください。</p>';
+  $$('[data-r]',rg).forEach(c=>c.onclick=()=>{R.sel.has(c.dataset.r)?R.sel.delete(c.dataset.r):R.sel.add(c.dataset.r);c.classList.toggle('on')});
+  $$('[data-ca]',rg).forEach(b=>b.onclick=()=>{const ids=rs.filter(r=>r.cls===b.dataset.ca).map(r=>r.id),all=ids.every(i=>R.sel.has(i));ids.forEach(i=>all?R.sel.delete(i):R.sel.add(i));drawRoster()});
+  $$('[data-cd]',rg).forEach(b=>b.onclick=()=>rdel(rs.filter(r=>r.cls===b.dataset.cd),b.dataset.cd+'組の'));
+}
+route();
+</script></body></html>
