@@ -58,12 +58,17 @@ const SCHOOLS = {"pub":[["奈良商工",[[111,"機械工学","商工 [機械工�
 const CATN = {pub:'奈良県公立', priv_in:'県内私立', priv_out:'県外私立', nat:'国立・県立大'};
 const FIELDS = [['q','面接で聞かれたこと（できるだけ具体的に）'],['good','うまくできた点・準備して役に立ったこと'],['bad','反省点・もっと準備しておけばよかったこと'],['adv','後輩へのアドバイス']];
 
+const SEED = [{"course": "電気工学科", "fmt": "個人面接", "mins": "10", "cnt": "3", "q": "・氏名、受験番号、中学校名\n・志望理由\n・好きな科目\n・テストの感想\n・クラブについて\n・入学後何がしたいか\n・中学校で頑張ったこと\n・入学後友達と積極的に話したいと思うか\n・入学説明会に来たか", "cat": "nat", "school": "奈良工業高等専門", "code": 0, "good": "", "bad": "", "adv": ""}, {"course": "物質化学工学科", "fmt": "個人面接", "mins": "10〜15", "cnt": "3", "q": "・志望理由\n・好きな教科は\n・中学校での所属部活動\n・どんな大人になりたいか\n・中学校でどんな実験をしたか\n・どんな実験が好きか\n・自分の長所・短所\n・入学するまでに何をするか\n・卒業後どうするか\n・物質化学工学科を選んだ理由（B）\n・（B）のきっかけになったこと\n・土日は主に何をしているか\n・最近の話題（物理化学について）\n・奈良高専入学してから何をしたいか。\n・中学での思い出でなにか記憶に残っていること（A）\n・（A）以外で記憶に残っているもの\n・家で化学や宇宙の動画を見て興味をもった詳しい理由", "cat": "nat", "school": "奈良工業高等専門", "code": 0, "good": "", "bad": "", "adv": ""}, {"course": "適正検査枠（推薦）", "fmt": "その他", "mins": "45", "cnt": "", "q": "【検査内容】数学・理科、合わせて45分（数学と理科合わせて200点満点）\n【数学】全10問ほど。半分は簡単な方程式や小問。最後の3、4問は大問になっていて少し難しい。関数が多く、図形や確率は出なかった。長方形の上を点 P と点 Q が動く問題（動点）が出た。\n【理科】全20問ほど。物理、地学、化学、生物がだいたい5問ずつ出る。生物以外は計算が多め。物理は仕事や仕事率、地学は飽和水蒸気量などの計算、化学は酸化銅の炭素、水素による還元、生物は顕微鏡の使い方が出た。", "cat": "nat", "school": "奈良工業高等専門", "code": 0, "good": "", "bad": "", "adv": ""}, {"course": "機械工学科B推薦", "fmt": "個人面接", "mins": "10", "cnt": "3", "q": "・学校、学科の志望動機\n・印象に残っているできごと、理由\n・がんばった教科、どのようにがんばったのか\n・自分が推薦された理由だと思うもの\n・この学校に入学してから頑張りたいこと", "cat": "nat", "school": "奈良工業高等専門", "code": 0, "good": "", "bad": "", "adv": ""}, {"course": "電子制御工学科", "fmt": "個人面接", "mins": "10〜15", "cnt": "3", "q": "・氏名、受験番号\n・志望理由\n・最近気になった理工学のニュースの説明\n・自己アピール\n・中学校生活で頑張ったこと\n・中学校生活で頑張ったことから学んだこと\n・県立高校ではなく、高専を志望した理由\n・電子制御に入ろうと思ったきっかけ", "cat": "nat", "school": "奈良工業高等専門", "code": 0, "good": "", "bad": "", "adv": ""}, {"course": "情報工学科", "fmt": "個人面接", "mins": "10", "cnt": "2", "q": "・氏名、受験番号\n・情報工学科を選んだ理由（再度詳しく）\n・中学校で頑張ったこと\n・プログラミングや機械学習を始めたきっかけ\n・数学： √ を使った計算問題、食塩水、確率\n・理科： 並列回路の電圧・電流・抵抗の問題、秒速を求める問題、光の問題（レンズとスクリーンを使った実験）、メタンの完全燃焼の化学反応式、酸素の質量からメタンの質量を求める問題、水素分子とその他の分子の質量の比、動物の種類分け", "cat": "nat", "school": "奈良工業高等専門", "code": 0, "good": "", "bad": "", "adv": ""}, {"course": "システムエンジニアコース志望者向け対策", "fmt": "", "mins": "", "cnt": "", "q": "【ほぼ確実に聞かれる定番質問】\n・氏名、受験番号、中学校名\n・学校・学科（コース）の志望動機／選んだ理由（再度詳しく聞かれることも）\n・県立高校ではなく、高専を志望した理由\n・入学後、何をしたいか／頑張りたいこと\n・卒業後どうするか（進路・将来像）\n・中学校で頑張ったこと、そこから学んだこと（体育祭の縦割りリーダーなど）\n・好きな科目・がんばった教科、どのようにがんばったのか\n・入学説明会（オープンキャンパス）に来たか", "adv": "【コース・専門分野の質問（読み替えて対策）】\n・コースに入ろうと思ったきっかけ（オープンキャンパスのプログラミング体験を答えられるように）\n・最近気になった理工学のニュース（AI・ロボット関連を1つ用意）\n・プログラミングやAIに興味を持ったきっかけ\n【人物像・推薦ならではの質問】\n・自分が推薦された理由だと思うもの\n・自己アピール／長所・短所\n・中学校での部活動・クラブについて\n・入学後、友達と積極的に話したいと思うか\n・入学するまでに何をするか／土日は主に何をしているか\n【口頭試問に注意】\n情報工学科では面接の中で数学（√の計算・食塩水・確率）や理科（回路・光・化学反応式など）の基礎問題が出題された。推薦でも簡単な口頭試問の可能性があるため、中学の主要単元の基本は復習しておく。", "cat": "nat", "school": "奈良工業高等専門", "code": 0, "good": "", "bad": ""}];
+async function importSeed(){
+  if(!confirm(`奈良工業高等専門学校の過去面接資料 ${SEED.length}件を取り込みます。\n（もう一度押しても重複しません）`))return;
+  try{await putMany('entries',SEED.map((s,i)=>({...s,id:'seed_nara_'+(i+1),year:0,cls:'',no:'',ts:i+1})));alert('取り込みました。');}catch(e){alert('取り込みに失敗しました：'+e.message)}
+}
 const $ = (s,e=document)=>e.querySelector(s), $$=(s,e=document)=>[...e.querySelectorAll(s)];
 const esc = s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const norm = s=>String(s).normalize('NFKC').toLowerCase().replace(/[ァ-ヶ]/g,c=>String.fromCharCode(c.charCodeAt(0)-96)).replace(/\s/g,'');
 const nat = (a,b)=>String(a).localeCompare(String(b),'ja',{numeric:true});
 const curYear = ()=>{const d=new Date();return d.getMonth()>=3?d.getFullYear():d.getFullYear()-1};
-const yl = y=>`${y}年度（令和${y-2018}）入試`;
+const yl = y=>y?`${y}年度（令和${y-2018}）入試`:'過去資料（年度不明）';
 function parseList(s){const o=[];String(s).split(/[,、，\s]+/).filter(Boolean).forEach(t=>{t=t.normalize('NFKC');const m=t.match(/^(\d+)[-~〜ー−](\d+)$/);if(m){for(let i=+m[1];i<=+m[2]&&i<=200;i++)o.push(String(i))}else o.push(t.replace(/組$/,''))});return[...new Set(o)]}
 
 /* ===== データ層（Firebase / お試しモード共通） ===== */
@@ -175,19 +180,19 @@ function listTab(){
   const ys=[...new Set(cache.entries.map(e=>e.year))].sort((a,b)=>b-a);
   $('#tb').innerHTML=`<div class="bar noprint"><select id="fy"><option value="">すべての年度</option>${ys.map(y=>`<option value="${y}" ${F.y==y?'selected':''}>${yl(y)}</option>`).join('')}</select>
   <select id="fc"><option value="">すべての区分</option>${Object.entries(CATN).map(([k,v])=>`<option value="${k}" ${F.cat===k?'selected':''}>${v}</option>`).join('')}</select>
-  <input id="fq" placeholder="高校名・内容で絞り込み" value="${esc(F.q)}"><button id="pa" class="s">表示中をすべて印刷</button><button id="dsel" class="d">選択を削除</button><button id="dall" class="d">表示中をすべて削除</button></div><div id="sum" class="hint noprint"></div><div id="gl"></div>`;
+  <input id="fq" placeholder="高校名・内容で絞り込み" value="${esc(F.q)}"><button id="pa" class="s">表示中をすべて印刷</button><button id="dsel" class="d">選択を削除</button><button id="dall" class="d">表示中をすべて削除</button><button id="imp" class="s">過去資料を取り込む（奈良高専）</button></div><div id="sum" class="hint noprint"></div><div id="gl"></div>`;
   $('#fy').onchange=e=>{F.y=e.target.value;drawGroups()};$('#fc').onchange=e=>{F.cat=e.target.value;drawGroups()};$('#fq').oninput=e=>{F.q=e.target.value;drawGroups()};
   $('#pa').onclick=()=>{document.body.classList.remove('pr1');print()};
-  $('#dsel').onclick=()=>delEntries([...pick],'選択した');$('#dall').onclick=()=>delEntries(filtered().map(e=>e.id),'表示中の');
+  $('#dsel').onclick=()=>delEntries([...pick],'選択した');$('#dall').onclick=()=>delEntries(filtered().map(e=>e.id),'表示中の');$('#imp').onclick=importSeed;
   drawGroups();
 }
 function filtered(){const q=norm(F.q);return cache.entries.filter(e=>(!F.y||e.year==F.y)&&(!F.cat||e.cat===F.cat)&&(!q||norm([e.school,e.course,e.q,e.good,e.bad,e.adv].join(' ')).includes(q)))}
 async function delEntries(ids,label){if(!ids.length)return alert('削除する対象がありません。');if(!confirm(`${label}振り返り ${ids.length}件を削除します。元に戻せません。よろしいですか？`))return;await delMany('entries',ids);ids.forEach(i=>pick.delete(i))}
 function pv(a){
-  const tag=e=>`<span class="y">${e.year}年度</span>${e.course?`［${esc(e.course)}］`:''}`;
+  const tag=e=>`<span class="y">${e.year?e.year+'年度':'過去資料'}</span>${e.course?`［${esc(e.course)}］`:''}`;
   const inf=e=>[e.fmt,e.mins?e.mins+'分':'',e.cnt?'面接官'+e.cnt+'人':''].filter(Boolean).join('・');
   const info=a.filter(inf).map(e=>`<li>${tag(e)}${esc(inf(e))}</li>`).join('');
-  return (info?`<div class="it"><h4>面接の形式・時間</h4><ul>${info}</ul></div>`:'')+FIELDS.map(([f,t])=>{const l=a.filter(e=>e[f]);return l.length?`<div class="it"><h4>${t.replace(/（.*$/,'')}</h4><ul>${l.map(e=>`<li>${tag(e)}${esc(e[f])}</li>`).join('')}</ul></div>`:''}).join('');
+  return (info?`<div class="it"><h4>面接の形式・時間</h4><ul>${info}</ul></div>`:'')+FIELDS.map(([f,t])=>{const l=a.filter(e=>e[f]);return l.length?`<div class="it"><h4>${t.replace(/（.*$/,'')}</h4><ul>${l.map(e=>`<li>${tag(e)}${/^[・【]/.test(e[f])?'<br>':''}${esc(e[f])}</li>`).join('')}</ul></div>`:''}).join('');
 }
 function drawGroups(){
   const gl=$('#gl');if(!gl)return;const es=filtered(),g=new Map();
@@ -195,8 +200,8 @@ function drawGroups(){
   const ks=[...g.keys()].sort((a,b)=>{const[ca,sa]=a.split('\u0001'),[cb,sb]=b.split('\u0001'),co=Object.keys(CATN);return co.indexOf(ca)-co.indexOf(cb)||((ORD.get(ca+sa)??9999)-(ORD.get(cb+sb)??9999))||nat(sa,sb)});
   $('#sum').textContent=`表示中：${ks.length}校 / ${es.length}件`;$('#dsel').textContent=`選択を削除（${pick.size}）`;
   gl.innerHTML=ks.length?ks.map((k,gi)=>{const[c,s]=k.split('\u0001'),a=g.get(k).sort((x,y)=>y.year-x.year||y.ts-x.ts),yrs=[...new Set(a.map(e=>e.year))];
-    return`<div class="group" data-g="${gi}"><div class="gh"><h3>${esc(s)}<small>${CATN[c]||''}・${a.length}件・${yrs.map(y=>y+'年度').join(' ')}</small></h3><span class="noprint"><button data-pr="${gi}">この高校を印刷</button> <button data-dg="${gi}">この高校を全削除</button></span></div>
-    <div class="ph">${esc(s)}　面接の振り返り（先輩より）</div>${a.map(e=>`<div class="e"><div class="eh"><input type="checkbox" class="noprint" style="width:auto" data-id="${e.id}" ${pick.has(e.id)?'checked':''}><span class="yr">${yl(e.year)}</span>${e.course?`<span class="tg">${esc(e.course)}</span>`:''}<span class="tg">${esc(e.fmt||'')}${e.mins?'・'+esc(e.mins)+'分':''}${e.cnt?'・面接官'+esc(e.cnt)+'人':''}</span><span class="who noprint">${esc(e.cls)}組${esc(e.no)}番</span><button class="d noprint" style="padding:1px 8px;font-size:12px" data-de="${e.id}">削除</button></div>
+    return`<div class="group" data-g="${gi}"><div class="gh"><h3>${esc(s)}<small>${CATN[c]||''}・${a.length}件・${yrs.map(y=>y?y+'年度':'過去資料').join(' ')}</small></h3><span class="noprint"><button data-pr="${gi}">この高校を印刷</button> <button data-dg="${gi}">この高校を全削除</button></span></div>
+    <div class="ph">${esc(s)}　面接の振り返り（先輩より）</div>${a.map(e=>`<div class="e"><div class="eh"><input type="checkbox" class="noprint" style="width:auto" data-id="${e.id}" ${pick.has(e.id)?'checked':''}><span class="yr">${yl(e.year)}</span>${e.course?`<span class="tg">${esc(e.course)}</span>`:''}<span class="tg">${esc(e.fmt||'')}${e.mins?'・'+esc(e.mins)+'分':''}${e.cnt?'・面接官'+esc(e.cnt)+'人':''}</span><span class="who noprint">${e.cls?esc(e.cls)+'組'+esc(e.no)+'番':'取り込み資料'}</span><button class="d noprint" style="padding:1px 8px;font-size:12px" data-de="${e.id}">削除</button></div>
     ${FIELDS.filter(([f])=>e[f]).map(([f,t])=>`<div class="f"><b>${t}</b><div>${esc(e[f])}</div></div>`).join('')}</div>`).join('')}<div class="pv">${pv(a)}</div></div>`}).join(''):'<div class="card hint">該当する振り返りはまだありません。</div>';
   const groups=[...gl.children];
   $$('[data-id]',gl).forEach(c=>c.onchange=()=>{c.checked?pick.add(c.dataset.id):pick.delete(c.dataset.id);$('#dsel').textContent=`選択を削除（${pick.size}）`});
