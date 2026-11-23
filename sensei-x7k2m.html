@@ -35,6 +35,7 @@ button.s{background:#fff;color:var(--ink)}button.d{background:#fff;color:var(--r
 .group{border:0;page-break-before:always}.group:first-of-type{page-break-before:avoid}.gh{background:#fff;color:#000;border-bottom:2px solid #000;border-radius:0}
 .group>.e{display:none}.pv{display:block}.pv .it{margin:0 0 16px;border:1.5px solid #000}.pv h4{margin:0;padding:5px 10px;font-size:14px;border-bottom:1.5px solid #000;background:#e8e8e8;-webkit-print-color-adjust:exact;print-color-adjust:exact;break-after:avoid}.pv ul{margin:0;padding:8px 12px 6px 30px}.pv li{margin:0 0 6px;padding-bottom:5px;border-bottom:1px dotted #888;white-space:pre-wrap;break-inside:avoid}.pv li:last-child{border-bottom:0}.pv .y{font-weight:700;font-size:11px;border:1px solid #000;padding:0 4px;margin-right:5px}body.pr1 .group:not(.pr){display:none}.who{display:none}}
 </style></head><body><div class="wrap" id="root"></div>
+<script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
@@ -58,11 +59,6 @@ const SCHOOLS = {"pub":[["奈良商工",[[111,"機械工学","商工 [機械工�
 const CATN = {pub:'奈良県公立', priv_in:'県内私立', priv_out:'県外私立', nat:'国立・県立大'};
 const FIELDS = [['q','面接で聞かれたこと（できるだけ具体的に）'],['good','うまくできた点・準備して役に立ったこと'],['bad','反省点・もっと準備しておけばよかったこと'],['adv','後輩へのアドバイス']];
 
-const SEED = [{"course": "電気工学科", "fmt": "個人面接", "mins": "10", "cnt": "3", "q": "・氏名、受験番号、中学校名\n・志望理由\n・好きな科目\n・テストの感想\n・クラブについて\n・入学後何がしたいか\n・中学校で頑張ったこと\n・入学後友達と積極的に話したいと思うか\n・入学説明会に来たか", "cat": "nat", "school": "奈良工業高等専門", "code": 0, "good": "", "bad": "", "adv": ""}, {"course": "物質化学工学科", "fmt": "個人面接", "mins": "10〜15", "cnt": "3", "q": "・志望理由\n・好きな教科は\n・中学校での所属部活動\n・どんな大人になりたいか\n・中学校でどんな実験をしたか\n・どんな実験が好きか\n・自分の長所・短所\n・入学するまでに何をするか\n・卒業後どうするか\n・物質化学工学科を選んだ理由（B）\n・（B）のきっかけになったこと\n・土日は主に何をしているか\n・最近の話題（物理化学について）\n・奈良高専入学してから何をしたいか。\n・中学での思い出でなにか記憶に残っていること（A）\n・（A）以外で記憶に残っているもの\n・家で化学や宇宙の動画を見て興味をもった詳しい理由", "cat": "nat", "school": "奈良工業高等専門", "code": 0, "good": "", "bad": "", "adv": ""}, {"course": "適正検査枠（推薦）", "fmt": "その他", "mins": "45", "cnt": "", "q": "【検査内容】数学・理科、合わせて45分（数学と理科合わせて200点満点）\n【数学】全10問ほど。半分は簡単な方程式や小問。最後の3、4問は大問になっていて少し難しい。関数が多く、図形や確率は出なかった。長方形の上を点 P と点 Q が動く問題（動点）が出た。\n【理科】全20問ほど。物理、地学、化学、生物がだいたい5問ずつ出る。生物以外は計算が多め。物理は仕事や仕事率、地学は飽和水蒸気量などの計算、化学は酸化銅の炭素、水素による還元、生物は顕微鏡の使い方が出た。", "cat": "nat", "school": "奈良工業高等専門", "code": 0, "good": "", "bad": "", "adv": ""}, {"course": "機械工学科B推薦", "fmt": "個人面接", "mins": "10", "cnt": "3", "q": "・学校、学科の志望動機\n・印象に残っているできごと、理由\n・がんばった教科、どのようにがんばったのか\n・自分が推薦された理由だと思うもの\n・この学校に入学してから頑張りたいこと", "cat": "nat", "school": "奈良工業高等専門", "code": 0, "good": "", "bad": "", "adv": ""}, {"course": "電子制御工学科", "fmt": "個人面接", "mins": "10〜15", "cnt": "3", "q": "・氏名、受験番号\n・志望理由\n・最近気になった理工学のニュースの説明\n・自己アピール\n・中学校生活で頑張ったこと\n・中学校生活で頑張ったことから学んだこと\n・県立高校ではなく、高専を志望した理由\n・電子制御に入ろうと思ったきっかけ", "cat": "nat", "school": "奈良工業高等専門", "code": 0, "good": "", "bad": "", "adv": ""}, {"course": "情報工学科", "fmt": "個人面接", "mins": "10", "cnt": "2", "q": "・氏名、受験番号\n・情報工学科を選んだ理由（再度詳しく）\n・中学校で頑張ったこと\n・プログラミングや機械学習を始めたきっかけ\n・数学： √ を使った計算問題、食塩水、確率\n・理科： 並列回路の電圧・電流・抵抗の問題、秒速を求める問題、光の問題（レンズとスクリーンを使った実験）、メタンの完全燃焼の化学反応式、酸素の質量からメタンの質量を求める問題、水素分子とその他の分子の質量の比、動物の種類分け", "cat": "nat", "school": "奈良工業高等専門", "code": 0, "good": "", "bad": "", "adv": ""}, {"course": "システムエンジニアコース志望者向け対策", "fmt": "", "mins": "", "cnt": "", "q": "【ほぼ確実に聞かれる定番質問】\n・氏名、受験番号、中学校名\n・学校・学科（コース）の志望動機／選んだ理由（再度詳しく聞かれることも）\n・県立高校ではなく、高専を志望した理由\n・入学後、何をしたいか／頑張りたいこと\n・卒業後どうするか（進路・将来像）\n・中学校で頑張ったこと、そこから学んだこと（体育祭の縦割りリーダーなど）\n・好きな科目・がんばった教科、どのようにがんばったのか\n・入学説明会（オープンキャンパス）に来たか", "adv": "【コース・専門分野の質問（読み替えて対策）】\n・コースに入ろうと思ったきっかけ（オープンキャンパスのプログラミング体験を答えられるように）\n・最近気になった理工学のニュース（AI・ロボット関連を1つ用意）\n・プログラミングやAIに興味を持ったきっかけ\n【人物像・推薦ならではの質問】\n・自分が推薦された理由だと思うもの\n・自己アピール／長所・短所\n・中学校での部活動・クラブについて\n・入学後、友達と積極的に話したいと思うか\n・入学するまでに何をするか／土日は主に何をしているか\n【口頭試問に注意】\n情報工学科では面接の中で数学（√の計算・食塩水・確率）や理科（回路・光・化学反応式など）の基礎問題が出題された。推薦でも簡単な口頭試問の可能性があるため、中学の主要単元の基本は復習しておく。", "cat": "nat", "school": "奈良工業高等専門", "code": 0, "good": "", "bad": ""}];
-async function importSeed(){
-  if(!confirm(`奈良工業高等専門学校の過去面接資料 ${SEED.length}件を取り込みます。\n（もう一度押しても重複しません）`))return;
-  try{await putMany('entries',SEED.map((s,i)=>({...s,id:'seed_nara_'+(i+1),year:0,cls:'',no:'',ts:i+1})));alert('取り込みました。');}catch(e){alert('取り込みに失敗しました：'+e.message)}
-}
 const $ = (s,e=document)=>e.querySelector(s), $$=(s,e=document)=>[...e.querySelectorAll(s)];
 const esc = s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const norm = s=>String(s).normalize('NFKC').toLowerCase().replace(/[ァ-ヶ]/g,c=>String.fromCharCode(c.charCodeAt(0)-96)).replace(/\s/g,'');
@@ -180,14 +176,46 @@ function listTab(){
   const ys=[...new Set(cache.entries.map(e=>e.year))].sort((a,b)=>b-a);
   $('#tb').innerHTML=`<div class="bar noprint"><select id="fy"><option value="">すべての年度</option>${ys.map(y=>`<option value="${y}" ${F.y==y?'selected':''}>${yl(y)}</option>`).join('')}</select>
   <select id="fc"><option value="">すべての区分</option>${Object.entries(CATN).map(([k,v])=>`<option value="${k}" ${F.cat===k?'selected':''}>${v}</option>`).join('')}</select>
-  <input id="fq" placeholder="高校名・内容で絞り込み" value="${esc(F.q)}"><button id="pa" class="s">表示中をすべて印刷</button><button id="dsel" class="d">選択を削除</button><button id="dall" class="d">表示中をすべて削除</button><button id="imp" class="s">過去資料を取り込む（奈良高専）</button></div><div id="sum" class="hint noprint"></div><div id="gl"></div>`;
+  <input id="fq" placeholder="高校名・内容で絞り込み" value="${esc(F.q)}"><button id="pa" class="s">表示中をすべて印刷</button><button id="dsel" class="d">選択を削除</button><button id="dall" class="d">表示中をすべて削除</button><button id="xl" class="s">選択をExcelで保存</button></div><div id="sum" class="hint noprint"></div><div id="gl"></div>`;
   $('#fy').onchange=e=>{F.y=e.target.value;drawGroups()};$('#fc').onchange=e=>{F.cat=e.target.value;drawGroups()};$('#fq').oninput=e=>{F.q=e.target.value;drawGroups()};
   $('#pa').onclick=()=>{document.body.classList.remove('pr1');print()};
-  $('#dsel').onclick=()=>delEntries([...pick],'選択した');$('#dall').onclick=()=>delEntries(filtered().map(e=>e.id),'表示中の');$('#imp').onclick=importSeed;
+  $('#dsel').onclick=()=>delEntries([...pick],'選択した');$('#dall').onclick=()=>delEntries(filtered().map(e=>e.id),'表示中の');$('#xl').onclick=exportXlsx;
   drawGroups();
 }
 function filtered(){const q=norm(F.q);return cache.entries.filter(e=>(!F.y||e.year==F.y)&&(!F.cat||e.cat===F.cat)&&(!q||norm([e.school,e.course,e.q,e.good,e.bad,e.adv].join(' ')).includes(q)))}
 async function delEntries(ids,label){if(!ids.length)return alert('削除する対象がありません。');if(!confirm(`${label}振り返り ${ids.length}件を削除します。元に戻せません。よろしいですか？`))return;await delMany('entries',ids);ids.forEach(i=>pick.delete(i))}
+async function exportXlsx(){
+  if(typeof ExcelJS==='undefined')return alert('Excel作成の部品を読み込めませんでした。ネットワークを確認して、ページを再読み込みしてください。');
+  let es=cache.entries.filter(e=>pick.has(e.id));
+  if(!es.length){if(!confirm(`チェックを入れた振り返りがありません。\n表示中の ${filtered().length}件をすべて保存しますか？`))return;es=filtered()}
+  if(!es.length)return alert('保存する振り返りがありません。');
+  const co=Object.keys(CATN);
+  es=es.slice().sort((a,b)=>co.indexOf(a.cat)-co.indexOf(b.cat)||((ORD.get(a.cat+a.school)??9999)-(ORD.get(b.cat+b.school)??9999))||nat(a.school,b.school)||b.year-a.year||b.ts-a.ts);
+  const cols=[['高校名',16],['区分',12],['年度',12],['コース',16],['面接形式',11],['時間',9],['面接官',8],['面接で聞かれたこと',44],['うまくできた点・準備して役に立ったこと',34],['反省点・もっと準備しておけばよかったこと',34],['後輩へのアドバイス',36],['クラス・番号',11]];
+  const wb=new ExcelJS.Workbook(),ws=wb.addWorksheet('面接振り返り',{views:[{state:'frozen',ySplit:2}],pageSetup:{orientation:'landscape',paperSize:9,fitToPage:true,fitToWidth:1,fitToHeight:0}});
+  ws.columns=cols.map(([,w])=>({width:w}));
+  const L='L',B={style:'thin',color:{argb:'FF9D9478'}},bd={top:B,left:B,bottom:B,right:B},F=c=>({type:'pattern',pattern:'solid',fgColor:{argb:c}}),font=(o={})=>({name:'Meiryo UI',size:10,...o});
+  const d=new Date(),ds=`${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`;
+  ws.addRow([`面接 振り返り一覧（${es.length}件・出力日 ${ds}）`]);ws.mergeCells('A1:L1');ws.getCell('A1').font=font({size:14,bold:true,color:{argb:'FF1F3350'}});ws.getRow(1).height=28;ws.getCell('A1').alignment={vertical:'middle'};
+  const hr=ws.addRow(cols.map(([h])=>h));hr.height=34;
+  hr.eachCell(c=>{c.fill=F('FF1F3350');c.font=font({bold:true,color:{argb:'FFFFFFFF'}});c.border=bd;c.alignment={horizontal:'center',vertical:'middle',wrapText:true}});
+  const wl=s=>[...s].reduce((n,c)=>n+(c.charCodeAt(0)>255?2:1),0),ln=(s,w)=>String(s||'').split('\n').reduce((n,l)=>n+Math.max(1,Math.ceil(wl(l)/(w-2))),0);
+  let last='',alt=0;
+  es.forEach(e=>{
+    const k=e.cat+'\u0001'+e.school;
+    if(k!==last){last=k;alt=0;const n=es.filter(x=>x.cat+'\u0001'+x.school===k).length,r=ws.addRow([`${e.school}　（${CATN[e.cat]||''}）　${n}件`]);ws.mergeCells(`A${r.number}:${L}${r.number}`);
+      const c=r.getCell(1);c.fill=F('FFF4E4B8');c.font=font({size:12,bold:true,color:{argb:'FF1F3350'}});c.alignment={vertical:'middle'};r.height=26;for(let i=1;i<=12;i++)r.getCell(i).border={top:{style:'medium',color:{argb:'FF1F3350'}},bottom:B,left:B,right:B}}
+    const v=[e.school,CATN[e.cat]||'',e.year?e.year+'年度':'過去資料',e.course||'',e.fmt||'',e.mins?e.mins+'分':'',e.cnt?e.cnt+'人':'',e.q||'',e.good||'',e.bad||'',e.adv||'',e.cls?`${e.cls}組${e.no}番`:''];
+    const r=ws.addRow(v);alt++;
+    r.eachCell({includeEmpty:true},(c,i)=>{c.border=bd;c.font=font();c.alignment={vertical:'top',wrapText:true,horizontal:(i>=3&&i<=7)||i===12?'center':'left'};c.fill=F(alt%2?'FFFFFFFF':'FFFAF6EA')});
+    const y=r.getCell(3);y.fill=F('FFB8860B');y.font=font({bold:true,color:{argb:'FFFFFFFF'}});
+    r.height=Math.max(24,Math.max(ln(v[7],44),ln(v[8],34),ln(v[9],34),ln(v[10],36),ln(v[3],16))*14+10);
+  });
+  ws.pageSetup.printTitlesRow='2:2';
+  const buf=await wb.xlsx.writeBuffer(),a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([buf],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}));
+  a.download=`面接振り返り_${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}.xlsx`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),3000);
+}
 function pv(a){
   const tag=e=>`<span class="y">${e.year?e.year+'年度':'過去資料'}</span>${e.course?`［${esc(e.course)}］`:''}`;
   const inf=e=>[e.fmt,e.mins?e.mins+'分':'',e.cnt?'面接官'+e.cnt+'人':''].filter(Boolean).join('・');
